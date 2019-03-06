@@ -6,6 +6,11 @@ class TasksController < ApplicationController
   	@tasks = current_user.tasks.order(created_at: :desc)
   end
 
+  def confirm_new
+    @task = current_user.tasks.new(task_params)
+    render :new unless @task.valid? 
+  end
+
   def show
   end
 
@@ -15,6 +20,11 @@ class TasksController < ApplicationController
 
   def create
   	@task = current_user.tasks.new(task_params)
+    if params[:back].present?
+      render :new
+      return
+    end
+
   	if @task.save
   	  redirect_to @task, notice: "タスク- #{@task.name}を登録しました"
     else

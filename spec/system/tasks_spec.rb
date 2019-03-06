@@ -24,7 +24,7 @@ describe 'タスク管理機能' ,type: :system do
 
 			 it_behaves_like 'ユーザーGが作成したタスクが表示される'
 			end
-		end
+	
 	
 
 		context 'ユーザーHがログインしている時' do
@@ -33,6 +33,7 @@ describe 'タスク管理機能' ,type: :system do
 				expect(page).to have_no_content '最初のタスク'
 			end
 		end
+	end
 
 
 
@@ -47,5 +48,35 @@ describe 'タスク管理機能' ,type: :system do
 			it_behaves_like 'ユーザーGが作成したタスクが表示される'
 			end
 		end
-end
+
+
+			# describe '新規作成機能' do
+			# let(:login_user) { user_g }
+
+			# before do
+			# 	visit new_task_path
+			# 	fill_in '名称', with: task_name
+			# 	click_button '登録する'
+			# end
+
+			# context '新規作成画面で名称を入力した時' do
+			# 	let(:task_name) { '新規作成のタスクを書く'}
+
+			# 	it '正常に登録される' do
+			# 		expect(page).to have_selector '.alert-success' , text: '新規作成のテストを書く'
+			# 	end
+			# end
+
+		# 	context '新規作成画面で名称を入力しなかった場合' do
+		# 		let(:task_name) {''}
+
+		# 		it 'エラーとなる' do
+		# 			within '#error_explanation' do
+		# 				expect(page).to have_content '名称を入力してください'
+		# 			end
+		# 		end
+		# 	end
+		# end
+	end
+
 
